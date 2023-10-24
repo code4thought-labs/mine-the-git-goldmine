@@ -478,7 +478,11 @@ This tool empowers you to make informed decisions, enabling you to steer your te
 
 ### Heatmap of Changed components
 
-Also, in a more fit graph, a treemap, in the component level:
+Visualizing the changed components in a treemap, creates a heatmap for changed files.
+This visual is much better at identifying the "hot areas" where changes occur, and where not.
+
+For making treemap, we use the `squarify` library.
+To install it run: `pip install squarify`.
 
 ```python
 import squarify
@@ -567,9 +571,10 @@ The plot_authors_per_file function can also be tailored to highlight files chang
 
 Identifying both hotspots for communication overhead and potential bottlenecks for concentrated knowledge allows for more balanced and resilient team operations. Addressing these issues proactively can save both time and resources in the long term, enabling your team to be more agile, adaptable, and effective.
 
-### Heatmap of Changed filed per number of authors
+### Heatmap of Changed files per number of Authors in Component level
 
-Again, in a more fit graph, a treemap, in the component level:
+Visualizing the changed files in component level by the number of auther who touched them in a treemap, creates a heatmap of knowledge distribution in the sysystem.
+This visual is much better at identifying the "hot areas" of knoweldge bottlenecks or communication overhead.
 
 ```python
 def plot_treemap_by_authors(df: pd.DataFrame):
