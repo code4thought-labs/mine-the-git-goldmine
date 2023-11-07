@@ -157,6 +157,8 @@ Create a new `scoping.py` file that will be used for this job.
 
 First, we want to add a **Technology** dimension in our Dataframe. To do that we can map the *file extensions* to *technologies*:
 ```python
+import pandas as pd
+
 def add_technology_column(df: pd.DataFrame) -> pd.DataFrame:
     # Define a function to map file extensions to technologies
     def map_extension_to_technology(file: str):
