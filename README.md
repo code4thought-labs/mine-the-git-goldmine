@@ -1,18 +1,42 @@
 # Open-conf Mine the Git Goldmine Workshop
 by Alex Zacharopoulos and Artemis Kouniakis
 
+## Step 0: Clone this repository and change working directory
+```sh
+git clone https://github.com/code4thought-labs/mine-the-git-goldmine.git
+
+cd mine-the-git-goldmine/
+```
+
 ## Step 1: Setup your environment
+
+### Make sure you install Python and relevant libs
 ```bash
-mkdir oc-git-goldmine
-cd oc-git-goldmine
 python --version
 pip --version
 pip install pandas matplot
+```
+
+### Clone mastodon repo to be used as a use case
+```bash
 git clone https://github.com/mastodon/mastodon.git
 ```
 
-## Step 2: Extract git history file
-The following `git log` is a good start for collecting comprehensive data on the repository. 
+## Step 2: Extract git history file for mastodon
+Change directory to mastodon and run your `git log` command. 
+You want to redirect it to a file for easier analysis, finally move the log history in our main folder.
+
+```bash
+cd mastodon
+
+git log --pretty=format:'BEGIN_COMMIT%nHash|%H%nAuthor|%ae%nDate|%ad%nMessage|%s' --date=format:'%d-%m-%Y %H:%M:%S' --numstat --no-renames > mastodon_git_history.log
+
+mv mastodon_git_history.log ../
+
+cd ..
+```
+
+This `git log` is a good start for collecting comprehensive data on the repository. 
 It captures several important fields including:
 
 - **Commit hash**: Using `%H` for the full hash.
@@ -21,26 +45,6 @@ It captures several important fields including:
 - **Commit Message**: Using `%s`.
 
 Additionally, the flags `--numstat` and `--summary` will give you information about the files changed and how many lines were added or deleted, as well as provide a summary of the changes.
-
-Before executing the command, make sure to clone the Mastodon repository and navigate into its directory:
-
-```bash
-git clone https://github.com/mastodon/mastodon.git
-cd mastodon
-```
-
-Then you can run your `git log` command and you also want to redirect it to a file for easier analysis,
-finally we move the log history in our main folder.
-
-```bash
-cd mastodon
-
-git log --pretty=format:'BEGIN_COMMIT%nHash|%H%nAuthor|%ae%nDate|%ad%nMessage|%s' --date=format:'%d-%m-%Y %H:%M:%S' --numstat > mastodon_git_history.log
-
-mv mastodon_git_history.log ../
-
-cd ..
-```
 
 ## Step 3: Parse the git history in a dataframe
 
