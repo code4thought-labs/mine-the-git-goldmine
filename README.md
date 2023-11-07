@@ -8,6 +8,17 @@ git clone https://github.com/code4thought-labs/mine-the-git-goldmine.git
 cd mine-the-git-goldmine/
 ```
 
+You can find the complete source code in the `complete` tag.
+```bash
+git checkout complete
+```
+
+Otherwise, you can stay in the `empty` tag
+```bash
+git checkout empty
+```
+
+
 ## Step 1: Setup your environment
 
 ### Make sure you install Python and relevant libs
